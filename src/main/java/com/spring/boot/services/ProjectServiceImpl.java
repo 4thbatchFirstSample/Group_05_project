@@ -1,5 +1,8 @@
 package com.spring.boot.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +12,36 @@ import com.spring.boot.repositories.ProjectRepository;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
-	private ProjectRepository projectRepository;
+	private ProjectRepository projectRepo;
 
 	@Override
 	public void addProject(Project project) {
-		projectRepository.save(project);
+		projectRepo.save(project);
 
 	}
+
+	@Override
+	public List<Project> getProject() {
+		return projectRepo.findAll();
+	}
+
+	@Override
+	public void deleteProject(Long id) {
+		projectRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public void updateProject(Project project) {
+		projectRepo.save(project);
+		
+	}
+
+	@Override
+	public Optional<Project> getProjectById(Long id) {
+		return projectRepo.findById(id);
+	}
+
+	
 
 }
