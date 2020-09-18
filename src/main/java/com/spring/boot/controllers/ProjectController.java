@@ -1,8 +1,5 @@
 package com.spring.boot.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,54 +25,70 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@Autowired
-	private ProjectRepository ProjectRepo;
-
+	
+	@PostMapping(value = "/project")
+	public ResponseEntity<Object> addProject(@RequestBody ProjectDto projectDto) {
+		projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
+		return new ResponseEntity<Object>("Added Successfully", HttpStatus.CREATED);
+	}
 	
 //	@PostMapping(value = "/project")
-//	public ResponseEntity<Object> addEmployee(@RequestBody ProjectDto projectDto) {
-//		projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
-//		return new ResponseEntity<Object>("Added Successfully", HttpStatus.CREATED);
+//	public String addProjectDetails(@RequestBody Project project) {
+//		projectService.addProject(project);
+//		return "Added successfully";
+//		
 //	}
-//	
-	@PostMapping(value = "/project")
-	public String addProjectDetails(@RequestBody Project project) {
-		projectService.addProject(project);
-		return "Added successfully";
+	
+	@GetMapping(value ="/project")
+	public ResponseEntity<Object> getProjectDetails(){
+//		ProjectConverter.projectToProjectDto(projectService.getProject());
+		return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProject()), HttpStatus.OK);
 		
 	}
 	
-	@GetMapping(value = "/getall")
-	public List<Project> getProjectDetails(){
-		return projectService.getProject();
-		
-	}
+//	@GetMapping(value = "/project")
+//	public List<Project> getProjectDetails(){
+//		return projectService.getProject();
+//		
+//	}
 	
 	@DeleteMapping(value = "/project/{id}")
-	public String deleteProjectDetails(@PathVariable Long id) {
+	public ResponseEntity<Object> deleteProjectDetails(@PathVariable Long id){
 		projectService.deleteProject(id);
-		return "Deleted Successfully";
+		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
 		
 	}
 	
-	@PutMapping(value = "/update/{id}")
-	public ResponseEntity<Object> updateProject(@RequestBody Project project, @PathVariable Long id){
-		Optional<Project> projectOptional = ProjectRepo.findById(id);
-		
-		if(!projectOptional.isPresent())
-			return ResponseEntity.notFound().build();
-		
-		project.setId(id);
-		projectService.addProject(project);
-		
-		return ResponseEntity.noContent().build();
+//	@DeleteMapping(value = "/project/{id}")
+//	public String deleteProjectDetails(@PathVariable Long id) {
+//		projectService.deleteProject(id);
+//		return "Deleted Successfully";
+//		
+//	}
+	
+//	@PutMapping(value = "/update/{id}")
+//	public ResponseEntity<Object> updateProject(@RequestBody Project project, @PathVariable Long id){
+//		Optional<Project> projectOptional = ProjectRepo.findById(id);
+//		
+//		if(!projectOptional.isPresent())
+//			return ResponseEntity.notFound().build();
+//		
+//		project.setId(id);
+//		projectService.addProject(project);
+//		
+//		return ResponseEntity.noContent().build();
+//		
+//	}
+	
+	@GetMapping(value = "/project/{id}")
+	public ResponseEntity<Object> getProjectBbyId(@PathVariable Long id){
+		return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProjectById(id)), HttpStatus.OK) ; 
 		
 	}
 	
-	@GetMapping(value = "/getInstance/{id}")
-	public Optional<Project> getProjectById(@PathVariable Long id){
-		return projectService.getProjectById(id);
-		
+	@PutMapping(value = "/project")
+	public ResponseEntity<Object> updateProject(@RequestBody ProjectDto projectDto) {
+		projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
+		return new ResponseEntity<Object>("Updated successfully", HttpStatus.OK);
 	}
-	
 }

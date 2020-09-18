@@ -10,5 +10,5 @@ public interface ProjectService {
 	public List<Project> getProject();
 	public void deleteProject(Long id);
 	public void updateProject(Project project);
-	public Optional<Project> getProjectById(Long id);
+	public Project getProjectById(Long id);
 }

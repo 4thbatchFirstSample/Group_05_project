@@ -38,8 +38,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Optional<Project> getProjectById(Long id) {
-		return projectRepo.findById(id);
+	public Project getProjectById(Long id) {
+		return projectRepo.findById(id).get();
 	}
 
 	

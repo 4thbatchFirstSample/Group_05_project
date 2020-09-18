@@ -17,6 +17,10 @@ public class ProjectConverter {
 			project.setId(projectDto.getId());
 			project.setName(projectDto.getName());
 			project.setAbbreviation(projectDto.getAbbreviation());
+			project.setType(projectDto.getType());
+			project.setStatus(projectDto.getStatus());
+			project.setStart_date(projectDto.getStart_date());
+			project.setEnd_date(projectDto.getEnd_date());
 			return project;
 		}
 		return null;
@@ -32,6 +36,10 @@ public class ProjectConverter {
 				projectDto.setId(project.getId());
 				projectDto.setName(project.getName());
 				projectDto.setAbbreviation(project.getAbbreviation());
+				projectDto.setType(project.getType());
+				projectDto.setStatus(project.getStatus());
+				projectDto.setStart_date(project.getStart_date());
+				projectDto.setEnd_date(project.getEnd_date());
 
 				listProjectDto.add(projectDto);
 			}
@@ -39,6 +47,21 @@ public class ProjectConverter {
 		}
 		return null;
 
+	}
+	
+	public static ProjectDto projectToProjectDto(Project project) {
+		ProjectDto projectDto = new ProjectDto();
+		if (project != null) {
+			projectDto.setId(project.getId());
+			projectDto.setName(project.getName());
+			projectDto.setAbbreviation(project.getAbbreviation());
+			projectDto.setType(project.getType());
+			projectDto.setStatus(project.getStatus());
+			projectDto.setStart_date(project.getStart_date());
+			projectDto.setEnd_date(project.getEnd_date());
+			return projectDto;
+		}
+		return null;
 	}
 
 }
