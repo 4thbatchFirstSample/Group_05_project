@@ -1,6 +1,5 @@
 package com.spring.boot.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +44,8 @@ public class ModuleServiceImpl implements ModuleService {
 
 	@Override
 	public List<Module> getAllModuleByProjectId(Long projectId) {
-//		List<Module> module = new ArrayList<>();
 		return moduleRepo.findByProjectId(projectId);
-//		.forEach(module::add);
-//		return module;
+
 	}
 
 }

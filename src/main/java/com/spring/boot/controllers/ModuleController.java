@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.boot.converters.ModuleConverter;
 import com.spring.boot.dto.ModuleDto;
-import com.spring.boot.entities.Module;
 import com.spring.boot.services.ModuleService;
 
 @RestController

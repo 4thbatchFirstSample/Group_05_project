@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.boot.converters.ProjectConverter;
 import com.spring.boot.dto.ProjectDto;
-import com.spring.boot.entities.Project;
-import com.spring.boot.repositories.ProjectRepository;
 import com.spring.boot.services.ProjectService;
 
 @RestController

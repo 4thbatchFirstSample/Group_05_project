@@ -27,7 +27,6 @@ public class ModuleConverter {
 	
 	public static List<ModuleDto> moduleToModuleDto(List<Module> moduleList){
 		List<ModuleDto> listModuleDto = new ArrayList<>();
-		Project project = new Project();
 		if(moduleList != null) {
 			for(Module module : moduleList) {
 				ModuleDto moduleDto = new ModuleDto();

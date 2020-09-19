@@ -9,16 +9,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Sub_module")
+@Table
 public class SubModule {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	
 	@ManyToOne
-	@JoinColumn(name = "module_id", nullable = false)
+	@JoinColumn(name = "moduleId", nullable=false)
 	private Module module;
 
 	public Long getId() {
@@ -44,7 +43,4 @@ public class SubModule {
 	public void setModule(Module module) {
 		this.module = module;
 	}
-	
-	
-	
 }
