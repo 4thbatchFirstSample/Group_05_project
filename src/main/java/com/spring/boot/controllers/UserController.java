@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.boot.entities.User;
+import com.spring.boot.converters.UserConverter;
+import com.spring.boot.dto.UserDto;
 import com.spring.boot.services.UserService;
 
 @RestController
@@ -22,14 +23,14 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping(value="/user")
-	public ResponseEntity<Object> addUser(@RequestBody User user){
-		userService.addUser(user);
+	public ResponseEntity<Object> addUser(@RequestBody UserDto userDto){
+		userService.addUser(UserConverter.userDtoToUser(userDto));
 		return new ResponseEntity<Object>("Added SuccessFully", HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value="/user")
 	public ResponseEntity<Object> getUser(){
-		return new ResponseEntity<Object>(userService.getUser(), HttpStatus.OK);
+		return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUser()), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/user/{id}")
@@ -39,13 +40,13 @@ public class UserController {
 	}
 	
 	@PutMapping(value="/user")
-	public ResponseEntity<Object> updateUser(@RequestBody User user){
-		userService.updateUser(user);
+	public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto){
+		userService.updateUser(UserConverter.userDtoToUser(userDto));
 		return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/user/{id}")
 	public ResponseEntity<Object> getUserById(@PathVariable Long id){
-		return new ResponseEntity<Object>(userService.getUserById(id), HttpStatus.OK);
+		return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUserById(id)), HttpStatus.OK);
 	}
 }

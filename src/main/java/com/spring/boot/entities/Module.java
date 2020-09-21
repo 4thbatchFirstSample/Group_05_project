@@ -14,20 +14,20 @@ public class Module {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long moduleId;
+	private Long id;
 	private String name;
 	
 	@ManyToOne
 	@JoinColumn(name = "projectId", nullable = false)
 	private Project project;
 
-	
-	public Long getModuleId() {
-		return moduleId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setModuleId(Long moduleId) {
-		this.moduleId = moduleId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

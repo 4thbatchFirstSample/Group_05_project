@@ -38,4 +38,14 @@ public class DefectsServiceImpl implements DefectsService {
 		return defectsRepository.findById(id).get();
 	}
 
+	@Override
+	public List<Defects> getAllDefectsBySubModuleId(Long id) {
+		return defectsRepository.findBySubModuleId(id);
+	}
+
+	@Override
+	public List<Defects> getAllDefectsByUserId(Long id) {
+		return defectsRepository.findByUserId(id);
+	}
+
 }

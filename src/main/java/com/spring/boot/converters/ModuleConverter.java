@@ -16,7 +16,7 @@ public class ModuleConverter {
 		Module module = new Module();
 		Project project = new Project();
 		if(moduleDto != null) {
-			module.setModuleId(moduleDto.getModuleId());
+			module.setId(moduleDto.getId());
 			module.setName(moduleDto.getName());
 			project.setId(moduleDto.getProjectId());
 			module.setProject(project);
@@ -30,7 +30,7 @@ public class ModuleConverter {
 		if(moduleList != null) {
 			for(Module module : moduleList) {
 				ModuleDto moduleDto = new ModuleDto();
-				moduleDto.setModuleId(module.getModuleId());
+				moduleDto.setId(module.getId());
 				moduleDto.setName(module.getName());
 				moduleDto.setProjectId(module.getProject().getId());
 				moduleDto.setProjectName(module.getProject().getName());
@@ -45,11 +45,10 @@ public class ModuleConverter {
 	
 	public static ModuleDto moduleToModuleDto(Module module) {
 		ModuleDto moduleDto = new ModuleDto();
-		Project project = new Project();
 		if(module != null) {
-			moduleDto.setModuleId(module.getModuleId());
+			moduleDto.setId(module.getId());
 			moduleDto.setName(module.getName());
-			moduleDto.setProjectId(project.getId());
+			moduleDto.setProjectId(module.getProject().getId());
 			return moduleDto;
 		}
 		return null;

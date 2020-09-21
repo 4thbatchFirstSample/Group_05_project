@@ -39,9 +39,14 @@ public class SubModuleServiceImpl implements SubModuleService {
 		return subModuleRepository.findById(id).get();
 	}
 
-//	@Override
-//	public List<SubModule> getAllSubModuleByModuleId(Long id) {
-//		return subModuleRepository.findByModuleId(id);
-//	}
+	@Override
+	public List<SubModule> getAllSubModuleByModuleId(Long id) {
+		return subModuleRepository.findByModuleId(id);
+	}
+
+	@Override
+	public List<SubModule> getAllSubModuleByUserId(Long id) {
+		return subModuleRepository.findByUserId(id);
+	}
 
 }

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.boot.converters.DefectConverter;
+import com.spring.boot.converters.SubModuleConverter;
+import com.spring.boot.dto.DefectDto;
 import com.spring.boot.entities.Defects;
 import com.spring.boot.services.DefectsService;
 
@@ -22,14 +25,14 @@ public class DefectsController {
 	private DefectsService defectsService;
 	
 	@PostMapping(value="/defect")
-	public ResponseEntity<Object> addDefect(@RequestBody Defects defects){
-		defectsService.addDefects(defects);
+	public ResponseEntity<Object> addDefect(@RequestBody DefectDto defectDto){
+		defectsService.addDefects(DefectConverter.DefectDtoToDefect(defectDto));
 		return new ResponseEntity<Object>("Added SuccessFully", HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value="/defect")
 	public ResponseEntity<Object> getDefect(){
-		return new ResponseEntity<Object>(defectsService.getDefects(), HttpStatus.OK);
+		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getDefects()), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/defect/{id}")
@@ -39,13 +42,23 @@ public class DefectsController {
 	}
 	
 	@PutMapping(value="/defect")
-	public ResponseEntity<Object> updateDefect(@RequestBody Defects defects){
-		defectsService.updateDefect(defects);
+	public ResponseEntity<Object> updateDefect(@RequestBody DefectDto defectDto){
+		defectsService.updateDefect(DefectConverter.DefectDtoToDefect(defectDto));
 		return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/defect/{id}")
 	public ResponseEntity<Object> getDefectById(@PathVariable Long id){
-		return new ResponseEntity<Object>(defectsService.getDefectById(id), HttpStatus.OK);
+		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getDefectById(id)), HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/defect/sumodule-id/{id}")
+	public ResponseEntity<Object> getDefectsBySubModuleId(@PathVariable Long id){
+		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsBySubModuleId(id)), HttpStatus.OK) ;
+	}
+	
+	@GetMapping(value="/defect/user-id/{id}")
+	public ResponseEntity<Object> getDefectsByUserId(@PathVariable Long id){
+		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsByUserId(id)), HttpStatus.OK) ;
 	}
 }

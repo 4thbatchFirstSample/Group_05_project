@@ -10,5 +10,6 @@ public interface SubModuleService {
 	public void deleteSubModule(Long id);
 	public void updateSubModule(SubModule subModule);
 	public SubModule getSubModuleById(Long id);
-//	public List<SubModule> getAllSubModuleByModuleId(Long id);
+	public List<SubModule> getAllSubModuleByModuleId(Long id);
+	public List<SubModule> getAllSubModuleByUserId(Long id);
 }

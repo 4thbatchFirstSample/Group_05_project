@@ -1,20 +1,8 @@
-package com.spring.boot.entities;
+package com.spring.boot.dto;
 
 import java.sql.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table
-public class Defects {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class DefectDto {
 	private Long id;
 	private String name;
 	private String status;
@@ -26,15 +14,8 @@ public class Defects {
 	private String entered_by;
 	private Date created_date;
 	private Date updated_date;
-	
-	@ManyToOne
-	@JoinColumn(name="subModuleId", nullable=false)
-	private SubModule subModule;
-	
-	@ManyToOne
-	@JoinColumn(name="userId", nullable=false)
-	private User user;
-
+	private Long subModuleId;
+	private Long userID;
 	
 	public Long getId() {
 		return id;
@@ -102,18 +83,19 @@ public class Defects {
 	public void setUpdated_date(Date updated_date) {
 		this.updated_date = updated_date;
 	}
-	public SubModule getSubModule() {
-		return subModule;
+	public Long getSubModuleId() {
+		return subModuleId;
 	}
-	public void setSubModule(SubModule subModule) {
-		this.subModule = subModule;
+	public void setSubModuleId(Long subModuleId) {
+		this.subModuleId = subModuleId;
 	}
-	public User getUser() {
-		return user;
+	public Long getUserID() {
+		return userID;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserID(Long userID) {
+		this.userID = userID;
 	}
 	
 	
+
 }

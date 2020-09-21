@@ -19,6 +19,10 @@ public class SubModule {
 	@ManyToOne
 	@JoinColumn(name = "moduleId", nullable=false)
 	private Module module;
+	
+	@ManyToOne
+	@JoinColumn(name = "userId", nullable=false)
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -43,4 +47,13 @@ public class SubModule {
 	public void setModule(Module module) {
 		this.module = module;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }

@@ -10,4 +10,6 @@ public interface DefectsService {
 	public void deleteDefect(Long id);
 	public void updateDefect(Defects defects);
 	public Defects getDefectById(Long id);
+	public List<Defects> getAllDefectsBySubModuleId(Long id);
+	public List<Defects> getAllDefectsByUserId(Long id);
 }
