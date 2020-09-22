@@ -10,34 +10,34 @@ import com.spring.boot.repositories.ProjectRepository;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
-	private ProjectRepository projectRepo;
+	private ProjectRepository projectRepository;
 
 	@Override
 	public void addProject(Project project) {
-		projectRepo.save(project);
+		projectRepository.save(project);
 
 	}
 
 	@Override
 	public List<Project> getProject() {
-		return projectRepo.findAll();
+		return projectRepository.findAll();
 	}
 
 	@Override
 	public void deleteProject(Long id) {
-		projectRepo.deleteById(id);
+		projectRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public void updateProject(Project project) {
-		projectRepo.save(project);
+		projectRepository.save(project);
 		
 	}
 
 	@Override
 	public Project getProjectById(Long id) {
-		return projectRepo.findById(id).get();
+		return projectRepository.findById(id).get();
 	}
 
 	

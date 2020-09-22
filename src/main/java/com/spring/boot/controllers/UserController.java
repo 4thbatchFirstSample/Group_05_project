@@ -27,24 +27,20 @@ public class UserController {
 		userService.addUser(UserConverter.userDtoToUser(userDto));
 		return new ResponseEntity<Object>("Added SuccessFully", HttpStatus.CREATED);
 	}
-	
 	@GetMapping(value="/user")
 	public ResponseEntity<Object> getUser(){
 		return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUser()), HttpStatus.OK);
 	}
-	
 	@DeleteMapping(value="/user/{id}")
 	public ResponseEntity<Object> deleteUser(@PathVariable Long id){
 		userService.deleteUser(id);
 		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
 	}
-	
 	@PutMapping(value="/user")
 	public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto){
 		userService.updateUser(UserConverter.userDtoToUser(userDto));
 		return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
 	}
-	
 	@GetMapping(value="/user/{id}")
 	public ResponseEntity<Object> getUserById(@PathVariable Long id){
 		return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUserById(id)), HttpStatus.OK);

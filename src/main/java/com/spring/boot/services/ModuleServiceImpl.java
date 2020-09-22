@@ -12,39 +12,39 @@ import com.spring.boot.repositories.ModuleRepository;
 public class ModuleServiceImpl implements ModuleService {
 
 	@Autowired
-	private ModuleRepository moduleRepo;
+	private ModuleRepository moduleRepository;
 	
 	@Override
 	public void addModule(Module module) {
-		moduleRepo.save(module);
+		moduleRepository.save(module);
 		
 	}
 
 	@Override
 	public List<Module> getAllModule() {
-		return moduleRepo.findAll();
+		return moduleRepository.findAll();
 	}
 
 	@Override
 	public void deleteModule(Long id) {
-		moduleRepo.deleteById(id);
+		moduleRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public void updateModule(Module module) {
-		moduleRepo.save(module);
+		moduleRepository.save(module);
 		
 	}
 
 	@Override
 	public Module getModuleById(Long id) {
-		return moduleRepo.findById(id).get();
+		return moduleRepository.findById(id).get();
 	}
 
 	@Override
 	public List<Module> getAllModuleByProjectId(Long projectId) {
-		return moduleRepo.findByProjectId(projectId);
+		return moduleRepository.findByProjectId(projectId);
 
 	}
 

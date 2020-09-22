@@ -17,7 +17,6 @@ public class User {
 	private String role;
 	private String e_mail;
 	
-	
 	public Long getId() {
 		return id;
 	}

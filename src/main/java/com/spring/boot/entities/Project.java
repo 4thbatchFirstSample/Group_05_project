@@ -21,7 +21,6 @@ public class Project {
 	private Date start_date;
 	private Date end_date;
 	
-	
 	public Long getId() {
 		return id;
 	}

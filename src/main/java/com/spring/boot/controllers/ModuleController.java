@@ -30,33 +30,28 @@ public class ModuleController {
 		moduleService.addModule(ModuleConverter.moduleDtoToModule(moduleDto));
 		return new ResponseEntity<Object>("Added Successfully", HttpStatus.OK);
 	}
-	
 	@GetMapping(value = "/module")
 	public ResponseEntity<Object> getAllModule(){
 		return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getAllModule()), HttpStatus.OK);
 		
 	}
-	
 	@DeleteMapping(value = "/module/{id}")
 	public ResponseEntity<Object> deleteModuleDetails(@PathVariable Long id){
 		moduleService.deleteModule(id);
 		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
 		
 	}
-	
 	@GetMapping(value = "/module/{id}")
 	public ResponseEntity<Object> getModuleById(@PathVariable Long id){
 		
 		return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getModuleById(id)), HttpStatus.OK);
 		
 	}
-	
 	@PutMapping(value = "/module")
 	public ResponseEntity<Object> updateModule(@RequestBody ModuleDto moduleDto){
 		moduleService.addModule(ModuleConverter.moduleDtoToModule(moduleDto));
 		return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
 	}
-	
 	@GetMapping(value = "/module/project-id/{id}")
 	public List<ModuleDto> getAllModule(@PathVariable Long id){
 		return ModuleConverter.moduleToModuleDto(moduleService.getAllModuleByProjectId(id));
