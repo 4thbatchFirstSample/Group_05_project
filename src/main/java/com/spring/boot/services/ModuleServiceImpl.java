@@ -48,4 +48,14 @@ public class ModuleServiceImpl implements ModuleService {
 
 	}
 
+	@Override
+	public boolean existsModuleId(Long id) {
+		return moduleRepository.existsById(id);
+	}
+
+	@Override
+	public boolean existsProjectId(Long id) {
+		return moduleRepository.existsByProjectId(id);
+	}
+
 }

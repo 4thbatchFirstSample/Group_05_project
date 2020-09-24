@@ -1,10 +1,22 @@
 package com.spring.boot.dto;
 
+import java.util.List;
+
 public class SubModuleDto {
 	private Long id;
 	private String name;
 	private Long moduleId;
 	private String moduleName;
+	private List<Long> userId;
+
+	
+	
+	public List<Long> getUserId() {
+		return userId;
+	}
+	public void setUserId(List<Long> userId) {
+		this.userId = userId;
+	}
 	
 	public Long getId() {
 		return id;

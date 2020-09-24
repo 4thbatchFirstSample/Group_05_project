@@ -33,16 +33,25 @@ public class UserController {
 	}
 	@DeleteMapping(value="/user/{id}")
 	public ResponseEntity<Object> deleteUser(@PathVariable Long id){
-		userService.deleteUser(id);
-		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
+		if(userService.existsUserId(id)) {
+			userService.deleteUser(id);
+			return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid UserId", HttpStatus.OK);
 	}
 	@PutMapping(value="/user")
 	public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto){
-		userService.updateUser(UserConverter.userDtoToUser(userDto));
-		return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
+		if(userService.existsUserId(userDto.getId())) {
+			userService.updateUser(UserConverter.userDtoToUser(userDto));
+			return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid UserId", HttpStatus.OK);
 	}
 	@GetMapping(value="/user/{id}")
 	public ResponseEntity<Object> getUserById(@PathVariable Long id){
-		return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUserById(id)), HttpStatus.OK);
+		if(userService.existsUserId(id)) {
+			return new ResponseEntity<Object>(UserConverter.userToUserDto(userService.getUserById(id)), HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid UserId", HttpStatus.OK);
 	}
 }

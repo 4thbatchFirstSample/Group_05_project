@@ -5,8 +5,9 @@ public class UserDto {
 	private String name;
 	private String password;
 	private String role;
-	private String e_mail;
+	private String email;
 	
+
 	public Long getId() {
 		return id;
 	}
@@ -31,12 +32,10 @@ public class UserDto {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getE_mail() {
-		return e_mail;
+	public String getEmail() {
+		return email;
 	}
-	public void setE_mail(String e_mail) {
-		this.e_mail = e_mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	
 }

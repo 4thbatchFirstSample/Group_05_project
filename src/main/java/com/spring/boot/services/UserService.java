@@ -10,4 +10,6 @@ public interface UserService {
 	public void deleteUser(Long id);
 	public void updateUser(User user);
 	public User getUserById(Long id);
+	public boolean existsUserId(Long id);
+	public boolean existsEmail(String email);
 }

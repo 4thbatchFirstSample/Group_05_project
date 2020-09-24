@@ -1,7 +1,5 @@
 package com.spring.boot.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,24 +35,32 @@ public class ModuleController {
 	}
 	@DeleteMapping(value = "/module/{id}")
 	public ResponseEntity<Object> deleteModuleDetails(@PathVariable Long id){
-		moduleService.deleteModule(id);
-		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
-		
+			moduleService.deleteModule(id);
+			return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
 	}
 	@GetMapping(value = "/module/{id}")
 	public ResponseEntity<Object> getModuleById(@PathVariable Long id){
-		
-		return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getModuleById(id)), HttpStatus.OK);
+		if(moduleService.existsModuleId(id)) {
+			return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getModuleById(id)), HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
 		
 	}
 	@PutMapping(value = "/module")
 	public ResponseEntity<Object> updateModule(@RequestBody ModuleDto moduleDto){
-		moduleService.addModule(ModuleConverter.moduleDtoToModule(moduleDto));
-		return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
+		if(moduleService.existsModuleId(moduleDto.getId())) {
+			moduleService.addModule(ModuleConverter.moduleDtoToModule(moduleDto));
+			return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
+
 	}
 	@GetMapping(value = "/module/project-id/{id}")
-	public List<ModuleDto> getAllModule(@PathVariable Long id){
-		return ModuleConverter.moduleToModuleDto(moduleService.getAllModuleByProjectId(id));
+	public ResponseEntity<Object> getAllModule(@PathVariable Long id){
+		if(moduleService.existsProjectId(id)) {
+			return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getAllModuleByProjectId(id)), HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
 		
 	}
 }

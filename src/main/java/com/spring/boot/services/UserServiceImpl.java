@@ -38,4 +38,15 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(id).get();
 	}
 
+	@Override
+	public boolean existsUserId(Long id) {
+		return userRepository.existsById(id);
+	}
+
+	@Override
+	public boolean existsEmail(String email) {
+		return userRepository.existsByEmail(email);
+		
+	}
+
 }

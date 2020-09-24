@@ -11,4 +11,7 @@ import com.spring.boot.entities.Defects;
 public interface DefectsRepository extends JpaRepository<Defects, Long>{
 	public List<Defects> findBySubModuleId(Long id);
 	public List<Defects> findByUserId(Long id);
+	public boolean existsBySubModuleId(Long id);
+	public boolean existsByUserId(Long id);
+
 }

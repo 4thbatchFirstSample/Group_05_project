@@ -24,7 +24,7 @@ public class SubModuleController {
 	
 	@PostMapping(value= "/submodule")
 	public ResponseEntity<Object> addSubModule(@RequestBody SubModuleDto subModuleDto){
-		subModuleService.addSubModule(SubModuleConverter.subModuleDtotoSubModule(subModuleDto));
+		subModuleService.addSubModule(SubModuleConverter.subModuleDtotoSubModule(subModuleDto), subModuleDto.getUserId());
 		return new ResponseEntity<Object>("Added Successfully", HttpStatus.OK);	
 	}
 	@GetMapping(value="/submodule")
@@ -33,24 +33,37 @@ public class SubModuleController {
 	}
 	@DeleteMapping(value="submodule/{id}")
 	public ResponseEntity<Object> deleteSubModule(@PathVariable Long id){
-		subModuleService.deleteSubModule(id);
-		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);	
+		if(subModuleService.existsSubModuleId(id)) {
+			subModuleService.deleteSubModule(id);
+			return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);	
+		}
+		return new ResponseEntity<Object>("Invalid SubmoduleId", HttpStatus.OK);	
 	}
 	@GetMapping(value="/submodule/{id}")
 	public ResponseEntity<Object> getSubModuleById(@PathVariable Long id){
-		return new ResponseEntity<Object>(SubModuleConverter.subModuleTosubModuleDto(subModuleService.getSubModuleById(id)), HttpStatus.OK);	
+		if(subModuleService.existsSubModuleId(id)) {
+			return new ResponseEntity<Object>(SubModuleConverter.subModuleTosubModuleDto(subModuleService.getSubModuleById(id)), HttpStatus.OK);	
+		}
+		return new ResponseEntity<Object>("SubModuleId is not valid", HttpStatus.OK);	
 	}
 	@PutMapping(value="/submodule")
 	public ResponseEntity<Object> updateSubModule(@RequestBody SubModuleDto subModuleDto){
-		subModuleService.updateSubModule(SubModuleConverter.subModuleDtotoSubModule(subModuleDto));
-		return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);	
+		if(subModuleService.existsSubModuleId(subModuleDto.getId())) {
+			subModuleService.updateSubModule(SubModuleConverter.subModuleDtotoSubModule(subModuleDto));
+			return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("SubModuleId is not valid", HttpStatus.OK);
 	}
 	@GetMapping(value="/submodule/module-id/{id}")
 	public ResponseEntity<Object> getSubModuleByModuleId(@PathVariable Long id){
-		return new ResponseEntity<Object>(SubModuleConverter.subModuleToSubModuleDto(subModuleService.getAllSubModuleByModuleId(id)), HttpStatus.OK) ;
+		if(subModuleService.existsModuleId(id)) {
+			return new ResponseEntity<Object>(SubModuleConverter.subModuleToSubModuleDto(subModuleService.getAllSubModuleByModuleId(id)), HttpStatus.OK) ;
+
+		}
+		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK) ;
 	}
 	@GetMapping(value="/submodule/user-id/{id}")
 	public ResponseEntity<Object> getSubModuleByUserId(@PathVariable Long id){
-		return new ResponseEntity<Object>(SubModuleConverter.subModuleToSubModuleDto(subModuleService.getAllSubModuleByUserId(id)), HttpStatus.OK) ;
+			return new ResponseEntity<Object>(SubModuleConverter.subModuleToSubModuleDto(subModuleService.getAllSubModuleByUserId(id)), HttpStatus.OK) ;
 	}
 }

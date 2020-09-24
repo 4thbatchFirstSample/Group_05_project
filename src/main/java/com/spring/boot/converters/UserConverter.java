@@ -15,7 +15,7 @@ public class UserConverter {
 		if(userDto != null) {
 			user.setId(userDto.getId());
 			user.setName(userDto.getName());
-			user.setE_mail(userDto.getE_mail());
+			user.setEmail(userDto.getEmail());
 			user.setPassword(userDto.getPassword());
 			user.setRole(userDto.getRole());
 			
@@ -29,7 +29,7 @@ public class UserConverter {
 		if(user != null) {
 			userDto.setId(user.getId());
 			userDto.setName(user.getName());
-			userDto.setE_mail(user.getE_mail());
+			userDto.setEmail(user.getEmail());
 			userDto.setPassword(user.getPassword());
 			userDto.setRole(user.getRole());
 			
@@ -45,10 +45,9 @@ public class UserConverter {
 				UserDto userDto = new UserDto();
 				userDto.setId(user.getId());
 				userDto.setName(user.getName());
-				userDto.setE_mail(user.getE_mail());
+				userDto.setEmail(user.getEmail());
 				userDto.setPassword(user.getPassword());
 				userDto.setRole(user.getRole());
-				
 				ListUserDto.add(userDto);
 			}
 			return ListUserDto;

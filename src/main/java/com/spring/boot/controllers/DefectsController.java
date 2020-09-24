@@ -33,24 +33,39 @@ public class DefectsController {
 	}
 	@DeleteMapping(value="/defect/{id}")
 	public ResponseEntity<Object> deleteDefect(@PathVariable Long id){
-		defectsService.deleteDefect(id);;
-		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
+		if(defectsService.existsDefectId(id)) {
+			defectsService.deleteDefect(id);;
+			return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid DefectID", HttpStatus.OK);
 	}
 	@PutMapping(value="/defect")
 	public ResponseEntity<Object> updateDefect(@RequestBody DefectDto defectDto){
-		defectsService.updateDefect(DefectConverter.DefectDtoToDefect(defectDto));
-		return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
+		if(defectsService.existsDefectId(defectDto.getId())) {
+			defectsService.updateDefect(DefectConverter.DefectDtoToDefect(defectDto));
+			return new ResponseEntity<Object>("Updated SuccessFully", HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid DefectID", HttpStatus.OK);
 	}
 	@GetMapping(value="/defect/{id}")
 	public ResponseEntity<Object> getDefectById(@PathVariable Long id){
-		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getDefectById(id)), HttpStatus.OK);
+		if(defectsService.existsDefectId(id)) {
+			return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getDefectById(id)), HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("Invalid DefectId", HttpStatus.OK);
 	}
 	@GetMapping(value="/defect/sumodule-id/{id}")
 	public ResponseEntity<Object> getDefectsBySubModuleId(@PathVariable Long id){
-		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsBySubModuleId(id)), HttpStatus.OK) ;
+		if(defectsService.existsSubModuleId(id)) {
+			return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsBySubModuleId(id)), HttpStatus.OK) ;
+		}
+		return new ResponseEntity<Object>("Invalid SubmoduleId", HttpStatus.OK) ;
 	}
 	@GetMapping(value="/defect/user-id/{id}")
 	public ResponseEntity<Object> getDefectsByUserId(@PathVariable Long id){
-		return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsByUserId(id)), HttpStatus.OK) ;
+		if(defectsService.existsUserId(id)) {
+			return new ResponseEntity<Object>(DefectConverter.defectToDefectDto(defectsService.getAllDefectsByUserId(id)), HttpStatus.OK) ;
+		}
+		return new ResponseEntity<Object>("Invalid UserId", HttpStatus.OK) ;
 	}
 }

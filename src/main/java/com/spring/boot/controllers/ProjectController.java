@@ -42,12 +42,18 @@ public class ProjectController {
 	}
 	@GetMapping(value = "/project/{id}")
 	public ResponseEntity<Object> getProjectBbyId(@PathVariable Long id){
-		return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProjectById(id)), HttpStatus.OK) ; 
+		if(projectService.existsProjectId(id)) {
+			return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProjectById(id)), HttpStatus.OK) ; 
+		}
+		return new ResponseEntity<Object>("ProjectID is invalid", HttpStatus.OK) ; 
 		
 	}
 	@PutMapping(value = "/project")
 	public ResponseEntity<Object> updateProject(@RequestBody ProjectDto projectDto) {
-		projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
-		return new ResponseEntity<Object>("Updated successfully", HttpStatus.OK);
+		if(projectService.existsProjectId(projectDto.getId())) {
+			projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
+			return new ResponseEntity<Object>("updated Successfully", HttpStatus.CREATED);
+			}
+		return new ResponseEntity<Object>("ProjectId is not valid", HttpStatus.CREATED);
 	}
 }

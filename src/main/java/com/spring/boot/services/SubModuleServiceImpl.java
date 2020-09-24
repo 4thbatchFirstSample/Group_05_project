@@ -12,9 +12,8 @@ import com.spring.boot.repositories.SubModuleRepository;
 public class SubModuleServiceImpl implements SubModuleService {
 	@Autowired
 	private SubModuleRepository subModuleRepository;
-	
 	@Override
-	public void addSubModule(SubModule subModule) {
+	public void addSubModule(SubModule subModule, List<Long> userIds) {
 		subModuleRepository.save(subModule);
 		
 	}
@@ -46,7 +45,22 @@ public class SubModuleServiceImpl implements SubModuleService {
 
 	@Override
 	public List<SubModule> getAllSubModuleByUserId(Long id) {
-		return subModuleRepository.findByUserId(id);
+		return subModuleRepository.findByUsersId(id);
 	}
+
+	@Override
+	public boolean existsSubModuleId(Long id) {
+		return subModuleRepository.existsById(id);
+	}
+
+	@Override
+	public boolean existsModuleId(Long id) {
+		return subModuleRepository.existsByModuleId(id);
+	}
+
+//	@Override
+//	public boolean existsUserId(Long id) {
+//		return subModuleRepository.existsByUserId(id);
+//	}
 
 }

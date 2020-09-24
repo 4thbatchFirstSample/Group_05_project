@@ -11,4 +11,5 @@ import com.spring.boot.entities.Module;
 @Repository
 public interface ModuleRepository extends JpaRepository<Module, Long> {
 	public List<Module> findByProjectId(Long projectId);
+	public boolean existsByProjectId(Long id);
 }

@@ -1,10 +1,15 @@
 package com.spring.boot.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table
@@ -12,11 +17,34 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name;
-	private String password;
-	private String role;
-	private String e_mail;
 	
+	@NotBlank(message = "Name is mandatary")
+	@Size(min = 2, max = 30)
+	private String name;
+	
+	@NotBlank(message = "Password is mandatary")
+	@Size(min = 2, max = 30)
+	private String password;
+	
+	private String role;
+	
+	@NotBlank(message = "Email is mandatary")
+	@Size(min = 2, max = 30)
+	private String email;
+	
+	
+
+	@ManyToMany(mappedBy = "users")
+	private List<SubModule> subModules;
+
+	
+	
+	public List<SubModule> getSubModules() {
+		return subModules;
+	}
+	public void setSubModules(List<SubModule> subModules) {
+		this.subModules = subModules;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -41,12 +69,13 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getE_mail() {
-		return e_mail;
+	public String getEmail() {
+		return email;
 	}
-	public void setE_mail(String e_mail) {
-		this.e_mail = e_mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	
 
 	
 }

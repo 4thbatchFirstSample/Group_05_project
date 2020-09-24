@@ -11,5 +11,7 @@ public interface ModuleService {
 	public void updateModule(Module module);
 	public Module getModuleById(Long id);
 	public List<Module> getAllModuleByProjectId(Long projectId);
+	public boolean existsModuleId(Long id);
+	public boolean existsProjectId(Long id);
 
 }

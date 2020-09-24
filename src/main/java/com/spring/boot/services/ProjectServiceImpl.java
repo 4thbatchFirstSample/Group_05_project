@@ -40,6 +40,11 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectRepository.findById(id).get();
 	}
 
+	@Override
+	public boolean existsProjectId(Long id) {
+		return projectRepository.existsById(id);
+	}
+
 	
 
 }

@@ -10,4 +10,5 @@ public interface ProjectService {
 	public void deleteProject(Long id);
 	public void updateProject(Project project);
 	public Project getProjectById(Long id);
+	public boolean existsProjectId(Long id);
 }

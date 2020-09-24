@@ -1,15 +1,19 @@
 package com.spring.boot.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "submodule")
 public class SubModule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,9 +24,22 @@ public class SubModule {
 	@JoinColumn(name = "moduleId", nullable=false)
 	private Module module;
 	
-	@ManyToOne
-	@JoinColumn(name = "userId", nullable=false)
-	private User user;
+	@ManyToMany
+	@JoinTable(
+			name = "assignedUser",
+			joinColumns = @JoinColumn(name = "sub_module_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
+
+	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 	public Long getId() {
 		return id;
@@ -48,12 +65,4 @@ public class SubModule {
 		this.module = module;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 }

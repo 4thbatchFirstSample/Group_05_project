@@ -48,4 +48,19 @@ public class DefectsServiceImpl implements DefectsService {
 		return defectsRepository.findByUserId(id);
 	}
 
+	@Override
+	public boolean existsDefectId(Long id) {
+		return defectsRepository.existsById(id);
+	}
+
+	@Override
+	public boolean existsSubModuleId(Long id) {
+		return defectsRepository.existsBySubModuleId(id);
+	}
+
+	@Override
+	public boolean existsUserId(Long id) {
+		return defectsRepository.existsByUserId(id);
+	}
+
 }

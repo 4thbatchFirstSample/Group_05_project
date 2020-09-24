@@ -12,4 +12,9 @@ public interface DefectsService {
 	public Defects getDefectById(Long id);
 	public List<Defects> getAllDefectsBySubModuleId(Long id);
 	public List<Defects> getAllDefectsByUserId(Long id);
+	public boolean existsDefectId(Long id);
+	public boolean existsSubModuleId(Long id);
+	public boolean existsUserId(Long id);
+
+	
 }

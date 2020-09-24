@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table
@@ -14,11 +16,21 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank(message = "Name is mandatary")
+	@Size(min = 2, max = 30)
 	private String name;
+	
+	@NotBlank(message = "Abbreviation is mandatary")
+	@Size(min = 1, max = 5)
 	private String abbreviation;
+	
 	private String type;
 	private String status;
+	
+//	@NotBlank(message = "Starting date is mandatary")
 	private Date start_date;
+	
 	private Date end_date;
 	
 	public Long getId() {
