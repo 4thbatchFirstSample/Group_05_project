@@ -7,7 +7,6 @@ public class UserDto {
 	private String role;
 	private String email;
 	
-
 	public Long getId() {
 		return id;
 	}

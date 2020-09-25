@@ -25,20 +25,15 @@ public class User {
 	@NotBlank(message = "Password is mandatary")
 	@Size(min = 2, max = 30)
 	private String password;
-	
 	private String role;
 	
 	@NotBlank(message = "Email is mandatary")
 	@Size(min = 2, max = 30)
 	private String email;
 	
-	
-
 	@ManyToMany(mappedBy = "users")
 	private List<SubModule> subModules;
 
-	
-	
 	public List<SubModule> getSubModules() {
 		return subModules;
 	}
@@ -74,8 +69,5 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-
-	
+	}	
 }

@@ -10,7 +10,6 @@ import com.spring.boot.entities.Project;
 
 @Service
 public class ProjectConverter {
-	// projectDto to Project Entity Converter
 	public static Project projectDtoToProject(ProjectDto projectDto) {
 		Project project = new Project();
 		if (projectDto != null) {
@@ -25,9 +24,6 @@ public class ProjectConverter {
 		}
 		return null;
 	}
-
-	// Project to ProjectDto list converter
-
 	public static List<ProjectDto> projectToProjectDto(List<Project> projectList) {
 		List<ProjectDto> listProjectDto = new ArrayList<>();
 		if (projectList != null) {
@@ -46,9 +42,7 @@ public class ProjectConverter {
 			return listProjectDto;
 		}
 		return null;
-
 	}
-	
 	public static ProjectDto projectToProjectDto(Project project) {
 		ProjectDto projectDto = new ProjectDto();
 		if (project != null) {
@@ -63,5 +57,4 @@ public class ProjectConverter {
 		}
 		return null;
 	}
-
 }

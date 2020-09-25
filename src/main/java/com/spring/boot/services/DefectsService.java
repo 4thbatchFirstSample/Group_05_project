@@ -15,6 +15,9 @@ public interface DefectsService {
 	public boolean existsDefectId(Long id);
 	public boolean existsSubModuleId(Long id);
 	public boolean existsUserId(Long id);
-
-	
+	public Integer defectCount();
+	public Integer defectCountByStatus(String status);	
+	public Integer defectCountByType(String type);
+	public Integer defectCountByPriority(String priority);
+	public Integer defectCountByServeriry(String serverity);
 }

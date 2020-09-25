@@ -13,5 +13,8 @@ public interface DefectsRepository extends JpaRepository<Defects, Long>{
 	public List<Defects> findByUserId(Long id);
 	public boolean existsBySubModuleId(Long id);
 	public boolean existsByUserId(Long id);
-
+	public Integer countByStatus(String status);
+	public Integer countByType(String type);
+	public Integer countByPriority(String priority);
+	public Integer countByServerity(String serverity);
 }

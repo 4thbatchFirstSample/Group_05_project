@@ -14,7 +14,4 @@ public interface SubModuleService {
 	public List<SubModule> getAllSubModuleByUserId(Long id);
 	public boolean existsSubModuleId(Long id);
 	public boolean existsModuleId(Long id);
-//	public boolean existsUserId(Long id);
-
-
 }

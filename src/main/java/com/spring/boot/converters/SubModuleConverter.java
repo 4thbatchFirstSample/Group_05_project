@@ -22,24 +22,18 @@ public class SubModuleConverter {
 			module.setId(subModuleDto.getModuleId());
 			module.setName(subModuleDto.getModuleName());
 			List<User> userList = new ArrayList<User>();
-//			System.out.println("initial "+subModuleDto.getUserId());
 			for(Long userId : subModuleDto.getUserId()) {
-//				System.out.println("userId   "+userId);
 				User user = new User();
 				user.setId(userId);
-				userList.add(user);
-//				System.out.println("userList  "+userList.toString());
-				
+				userList.add(user);				
 			}
 			subModule.setModule(module);
 			subModule.setUsers(userList);
-//			System.out.println("userListOut  "+userList.toString());
 			return subModule;
 		}
 		return null;
 		
 	}
-	
 	public static List<SubModuleDto> subModuleToSubModuleDto(List<SubModule> subModuleList ){
 		List<SubModuleDto> listSubModuleDto = new ArrayList<>();
 		if(subModuleList != null) {
@@ -54,15 +48,12 @@ public class SubModuleConverter {
 					userIdList.add(user.getId());
 				}
 				subModuleDto.setUserId(userIdList);
-				
 				listSubModuleDto.add(subModuleDto);
 			}
 			return listSubModuleDto;
 		}
 		return null;
-		
 	}
-	
 	public static SubModuleDto subModuleTosubModuleDto(SubModule subModule) {
 		SubModuleDto subModuleDto = new SubModuleDto();
 		List<Long> userIdList = new ArrayList<>();
@@ -75,7 +66,6 @@ public class SubModuleConverter {
 				userIdList.add(user.getId());
 			}
 			subModuleDto.setUserId(userIdList);
-			
 			return subModuleDto;
 		}
 		return null;

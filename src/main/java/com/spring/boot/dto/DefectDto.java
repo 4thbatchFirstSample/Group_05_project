@@ -6,7 +6,6 @@ public class DefectDto {
 	private Long id;
 	private String name;
 	private String status;
-	private String action;
 	private String type;
 	private String priority;
 	private String serverity;
@@ -34,12 +33,6 @@ public class DefectDto {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public String getAction() {
-		return action;
-	}
-	public void setAction(String action) {
-		this.action = action;
 	}
 	public String getType() {
 		return type;
@@ -95,7 +88,4 @@ public class DefectDto {
 	public void setUserID(Long userID) {
 		this.userID = userID;
 	}
-	
-	
-
 }

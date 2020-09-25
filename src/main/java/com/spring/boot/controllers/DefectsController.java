@@ -68,4 +68,24 @@ public class DefectsController {
 		}
 		return new ResponseEntity<Object>("Invalid UserId", HttpStatus.OK) ;
 	}
+	@GetMapping(value="/defect/count")
+	public ResponseEntity<Object> getDefectCount(){
+		return new ResponseEntity<Object>(defectsService.defectCount(), HttpStatus.OK);
+	}
+	@GetMapping(value = "/defect/countByStatus/{status}")
+	public ResponseEntity<Object> getDefectCountByStatus(@PathVariable String status){
+		return new ResponseEntity<Object>(defectsService.defectCountByStatus(status), HttpStatus.OK);
+	}
+	@GetMapping(value = "/defect/countByType/{type}")
+	public ResponseEntity<Object> getDefectCountByType(@PathVariable String type){
+		return new ResponseEntity<Object>(defectsService.defectCountByType(type), HttpStatus.OK);
+	}
+	@GetMapping(value = "/defect/countByPriority/{priority}")
+	public ResponseEntity<Object> getDefectCountByPriority(@PathVariable String priority){
+		return new ResponseEntity<Object>(defectsService.defectCountByPriority(priority), HttpStatus.OK);
+	}
+	@GetMapping(value = "/defect/countByServerity/{serverity}")
+	public ResponseEntity<Object> getDefectCountByServerity(@PathVariable String serverity){
+		return new ResponseEntity<Object>(defectsService.defectCountByServeriry(serverity), HttpStatus.OK);
+	}
 }

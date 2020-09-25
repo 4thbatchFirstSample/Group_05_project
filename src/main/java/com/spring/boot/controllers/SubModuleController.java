@@ -58,7 +58,6 @@ public class SubModuleController {
 	public ResponseEntity<Object> getSubModuleByModuleId(@PathVariable Long id){
 		if(subModuleService.existsModuleId(id)) {
 			return new ResponseEntity<Object>(SubModuleConverter.subModuleToSubModuleDto(subModuleService.getAllSubModuleByModuleId(id)), HttpStatus.OK) ;
-
 		}
 		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK) ;
 	}

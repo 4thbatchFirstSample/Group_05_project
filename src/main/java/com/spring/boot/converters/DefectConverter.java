@@ -18,7 +18,6 @@ public class DefectConverter {
 		SubModule subModule = new SubModule();
 		if(defectDto != null) {
 			defect.setId(defectDto.getId());
-			defect.setAction(defectDto.getAction());
 			defect.setCreated_date(defectDto.getCreated_date());
 			defect.setDescription(defectDto.getDescription());
 			defect.setPriority(defectDto.getPriority());
@@ -46,7 +45,6 @@ public class DefectConverter {
 			for(Defects defect : defectList) {
 				DefectDto defectDto = new DefectDto();
 				defectDto.setId(defect.getId());
-				defectDto.setAction(defect.getAction());
 				defectDto.setCreated_date(defect.getCreated_date());
 				defectDto.setDescription(defect.getDescription());
 				defectDto.setPriority(defect.getPriority());
@@ -71,7 +69,6 @@ public class DefectConverter {
 		DefectDto defectDto = new DefectDto();
 		if(defect != null) {
 			defectDto.setId(defect.getId());
-			defectDto.setAction(defect.getAction());
 			defectDto.setCreated_date(defect.getCreated_date());
 			defectDto.setDescription(defect.getDescription());
 			defectDto.setPriority(defect.getPriority());
@@ -86,9 +83,6 @@ public class DefectConverter {
 			
 			return defectDto;
 		}
-		return null;
-		
+		return null;	
 	}
-
-	
 }

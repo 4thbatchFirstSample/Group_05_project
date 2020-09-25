@@ -17,36 +17,28 @@ public class UserServiceImpl implements UserService {
 	public void addUser(User user) {
 		userRepository.save(user);
 	}
-
 	@Override
 	public List<User> getUser() {
 		return userRepository.findAll();
 	}
-
 	@Override
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
-
 	@Override
 	public void updateUser(User user) {
 		userRepository.save(user);
 	}
-
 	@Override
 	public User getUserById(Long id) {
 		return userRepository.findById(id).get();
 	}
-
 	@Override
 	public boolean existsUserId(Long id) {
 		return userRepository.existsById(id);
 	}
-
 	@Override
 	public boolean existsEmail(String email) {
-		return userRepository.existsByEmail(email);
-		
+		return userRepository.existsByEmail(email);	
 	}
-
 }

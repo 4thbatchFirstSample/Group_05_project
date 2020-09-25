@@ -24,7 +24,6 @@ public class ModuleConverter {
 		}
 		return null;	
 	}
-	
 	public static List<ModuleDto> moduleToModuleDto(List<Module> moduleList){
 		List<ModuleDto> listModuleDto = new ArrayList<>();
 		if(moduleList != null) {
@@ -39,20 +38,18 @@ public class ModuleConverter {
 			}
 			return listModuleDto;
 		}
-		return null;
-		
+		return null;	
 	}
-	
 	public static ModuleDto moduleToModuleDto(Module module) {
 		ModuleDto moduleDto = new ModuleDto();
 		if(module != null) {
 			moduleDto.setId(module.getId());
 			moduleDto.setName(module.getName());
 			moduleDto.setProjectId(module.getProject().getId());
+			moduleDto.setProjectName(module.getProject().getName());
+
 			return moduleDto;
 		}
-		return null;
-		
+		return null;	
 	}
-
 }

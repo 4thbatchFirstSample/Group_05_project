@@ -9,15 +9,12 @@ public class SubModuleDto {
 	private String moduleName;
 	private List<Long> userId;
 
-	
-	
 	public List<Long> getUserId() {
 		return userId;
 	}
 	public void setUserId(List<Long> userId) {
 		this.userId = userId;
 	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -41,7 +38,5 @@ public class SubModuleDto {
 	}
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
-	}
-	
-	
+	}	
 }

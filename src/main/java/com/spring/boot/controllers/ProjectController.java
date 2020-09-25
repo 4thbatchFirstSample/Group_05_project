@@ -23,7 +23,6 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	
 	@PostMapping(value = "/project")
 	public ResponseEntity<Object> addProject(@RequestBody ProjectDto projectDto) {
 		projectService.addProject(ProjectConverter.projectDtoToProject(projectDto));
@@ -31,14 +30,12 @@ public class ProjectController {
 	}	
 	@GetMapping(value ="/project")
 	public ResponseEntity<Object> getProjectDetails(){
-		return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProject()), HttpStatus.OK);
-		
+		return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProject()), HttpStatus.OK);	
 	}
 	@DeleteMapping(value = "/project/{id}")
 	public ResponseEntity<Object> deleteProjectDetails(@PathVariable Long id){
 		projectService.deleteProject(id);
 		return new ResponseEntity<Object>("Deleted Successfully", HttpStatus.OK);
-		
 	}
 	@GetMapping(value = "/project/{id}")
 	public ResponseEntity<Object> getProjectBbyId(@PathVariable Long id){
@@ -46,7 +43,6 @@ public class ProjectController {
 			return new ResponseEntity<Object>(ProjectConverter.projectToProjectDto(projectService.getProjectById(id)), HttpStatus.OK) ; 
 		}
 		return new ResponseEntity<Object>("ProjectID is invalid", HttpStatus.OK) ; 
-		
 	}
 	@PutMapping(value = "/project")
 	public ResponseEntity<Object> updateProject(@RequestBody ProjectDto projectDto) {

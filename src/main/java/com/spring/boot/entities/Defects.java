@@ -23,12 +23,28 @@ public class Defects {
 	@Size(min = 2, max = 30)
 	private String name;
 	
+	@NotBlank(message = "Status is mandatary")
+	@Size(min = 2, max = 20)
 	private String status;
-	private String action;
+	
+	@NotBlank(message = "Type is mandatary")
+	@Size(min = 2, max = 20)
 	private String type;
+	
+	@NotBlank(message = "Priority is mandatary")
+	@Size(min = 2, max = 20)
 	private String priority;
+	
+	@NotBlank(message = "Serverity is mandatary")
+	@Size(min = 2, max = 20)
 	private String serverity;
+	
+	@NotBlank(message = "Description is mandatary")
+	@Size(min = 2, max = 50)
 	private String description;
+	
+	@NotBlank(message = "EnteredBy is mandatary")
+	@Size(min = 2, max = 30)
 	private String entered_by;
 	private Date created_date;
 	private Date updated_date;
@@ -41,7 +57,6 @@ public class Defects {
 	@JoinColumn(name="userId", nullable=false)
 	private User user;
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -59,12 +74,6 @@ public class Defects {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public String getAction() {
-		return action;
-	}
-	public void setAction(String action) {
-		this.action = action;
 	}
 	public String getType() {
 		return type;
@@ -120,6 +129,4 @@ public class Defects {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 }

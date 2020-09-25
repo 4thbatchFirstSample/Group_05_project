@@ -31,7 +31,6 @@ public class ModuleController {
 	@GetMapping(value = "/module")
 	public ResponseEntity<Object> getAllModule(){
 		return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getAllModule()), HttpStatus.OK);
-		
 	}
 	@DeleteMapping(value = "/module/{id}")
 	public ResponseEntity<Object> deleteModuleDetails(@PathVariable Long id){
@@ -44,7 +43,6 @@ public class ModuleController {
 			return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getModuleById(id)), HttpStatus.OK);
 		}
 		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
-		
 	}
 	@PutMapping(value = "/module")
 	public ResponseEntity<Object> updateModule(@RequestBody ModuleDto moduleDto){
@@ -53,7 +51,6 @@ public class ModuleController {
 			return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
 		}
 		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
-
 	}
 	@GetMapping(value = "/module/project-id/{id}")
 	public ResponseEntity<Object> getAllModule(@PathVariable Long id){
@@ -61,6 +58,5 @@ public class ModuleController {
 			return new ResponseEntity<Object>(ModuleConverter.moduleToModuleDto(moduleService.getAllModuleByProjectId(id)), HttpStatus.OK);
 		}
 		return new ResponseEntity<Object>("ModuleId is not valid", HttpStatus.OK);
-		
 	}
 }

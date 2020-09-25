@@ -27,10 +27,7 @@ public class Project {
 	
 	private String type;
 	private String status;
-	
-//	@NotBlank(message = "Starting date is mandatary")
 	private Date start_date;
-	
 	private Date end_date;
 	
 	public Long getId() {
@@ -74,7 +71,5 @@ public class Project {
 	}
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
-	}
-	
-	
+	}	
 }

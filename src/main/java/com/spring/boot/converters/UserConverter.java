@@ -22,7 +22,6 @@ public class UserConverter {
 			return user;
 		}
 		return null;
-		
 	}
 	public static UserDto userToUserDto(User user) {
 		UserDto userDto = new UserDto();
@@ -36,7 +35,6 @@ public class UserConverter {
 			return userDto;
 		}
 		return null;
-		
 	}
 	public static List<UserDto> userToUserDto(List<User> userList){
 		List<UserDto> ListUserDto = new ArrayList<>();
@@ -53,6 +51,5 @@ public class UserConverter {
 			return ListUserDto;
 		}
 		return null;
-		
 	}
 }
