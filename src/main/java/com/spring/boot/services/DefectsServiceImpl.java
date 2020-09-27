@@ -72,6 +72,5 @@ public class DefectsServiceImpl implements DefectsService {
 	@Override
 	public Integer defectCountByServeriry(String serverity) {
 		return (int) defectsRepository.countByServerity(serverity);
-	}
-	
+	}	
 }
